@@ -13,10 +13,7 @@ Text Domain: recaptcha_lightweight_adaptation
 */
 
 /**
- * Main class reCAPTCHA_lightweight_adaptation
- *
- * @since 1.0.0
+ * Load the main plugin class.
  */
-class reCAPTCHA_lightweight_adaptation {
-
-}
+require plugin_dir_path( __FILE__ ) . 'inc/class-plugin.php';
+Recaptcha_Lightweight_Adaptation_Plugin::run();
