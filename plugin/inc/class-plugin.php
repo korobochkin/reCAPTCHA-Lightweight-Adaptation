@@ -1,12 +1,12 @@
 <?php
 
 /**
- * Main class Recaptcha_Lightweight_Adaptation.
+ * Main class Recaptcha_Lightweight_Adaptation_Plugin.
  *
  * @since 1.0.0
  *
- * @package    Recaptcha_Lightweight_Adaptation
- * @subpackage Recaptcha_Lightweight_Adaptation/inc
+ * @package    Recaptcha_Lightweight_Adaptation_Plugin
+ * @subpackage Recaptcha_Lightweight_Adaptation_Plugin/inc
  */
 class Recaptcha_Lightweight_Adaptation_Plugin {
 
