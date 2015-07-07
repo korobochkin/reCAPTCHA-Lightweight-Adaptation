@@ -11,31 +11,16 @@
 class Recaptcha_Lightweight_Adaptation_Admin {
 
 	/**
-	 * @var
-	 */
-	public static $pages;
-
-	/**
 	 *
 	 */
-	public static function __construct() {
-		self::$pages = array (
-			//'name_of_the_page' =>
-		);
-	}
+	public static function init() {
+		// Register admin pages
+		add_action( 'admin_menu', array( 'Recaptcha_Lightweight_Adaptation_Admin_Settings', 'setup_pages' ) );
 
-	/**
-	 *
-	 */
-	public static function pages() {
-		//require_once() . 'admin/class-recaptcha-lighweight-adaptation-admin-general-settings.php';
-	}
+		// Sections
+		add_action( 'admin_init', array( 'Recaptcha_Lightweight_Adaptation_Admin_Settings', 'settings_init' ) );
 
-	/**
-	 *
-	 */
-	public static function register_pages() {
-
+		// Добавляем ссылку на настройку плагина
 	}
 
 	/**

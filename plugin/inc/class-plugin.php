@@ -48,7 +48,8 @@ class Recaptcha_Lightweight_Adaptation_Plugin {
 
 	public static function load_dependencies() {
 		if( is_admin() ) {
-			require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-recaptcha-lightweight-adaptation-admin.php';
+			require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-admin.php';
+			Recaptcha_Lightweight_Adaptation_Admin::init();
 		}
 		else {
 			//require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class';
@@ -72,5 +73,6 @@ class Recaptcha_Lightweight_Adaptation_Plugin {
 		/**
 		 *
 		 */
+
 	}
 }
