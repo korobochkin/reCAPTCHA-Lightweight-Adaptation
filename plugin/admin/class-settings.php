@@ -33,8 +33,10 @@ class Recaptcha_Lightweight_Adaptation_Admin_Settings {
 
 		// Settings
 		self::$settings['recaptcha_lightweight_adaptation_general'] = array(
-			'recaptcha_lightweight_adaptation',
-			'Recaptcha_Lightweight_Adaptation_Admin_Settings_Setting'
+			'settings' => array(
+				'recaptcha_lightweight_adaptation',
+				'Recaptcha_Lightweight_Adaptation_Admin_Settings_Setting'
+			)
 		);
 
 		// Sections
@@ -100,7 +102,10 @@ class Recaptcha_Lightweight_Adaptation_Admin_Settings {
 		// Register settings
 		if( !empty( self::$settings ) ) {
 			foreach( self::$settings as $name => $value ) {
-				register_setting( $name, $value[0], $value[1] );
+				if( empty( self::$settings[$name]['instance'] ) ) {
+					self::$settings[$name]['instance'] = new $value['settings'][1];
+				}
+				register_setting( $name, $value['settings'][0], array( $value['settings'][1], 'sanitize' ) );
 			}
 		}
 
@@ -129,6 +134,16 @@ class Recaptcha_Lightweight_Adaptation_Admin_Settings {
 				if( empty( self::$fields[$name]['instance'] ) ) {
 					self::$fields[$name]['instance'] = new $value['settings'][1]();
 				}
+				add_settings_field(
+					$name,
+					$value['settings'][0],
+					array(
+						self::$fields[$name]['instance'],
+						'render'
+					),
+					$value['settings'][2],
+					$value['settings'][3]
+				);
 			}
 		}
 	}

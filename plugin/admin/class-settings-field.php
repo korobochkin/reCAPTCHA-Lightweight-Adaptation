@@ -6,6 +6,6 @@ class Recaptcha_Lightweight_Adaptation_Admin_Settings_Field {
 	}
 
 	public function render() {
-
+		$options = get_option
 	}
 }
