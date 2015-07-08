@@ -14,6 +14,10 @@ class Recaptcha_Lightweight_Adaptation_Admin {
 	 *
 	 */
 	public static function init() {
+		self::load();
+
+		add_action( 'init', array( 'Recaptcha_Lightweight_Adaptation_Admin_Settings', 'init' ) );
+
 		// Register admin pages
 		add_action( 'admin_menu', array( 'Recaptcha_Lightweight_Adaptation_Admin_Settings', 'register_pages' ) );
 
@@ -28,5 +32,13 @@ class Recaptcha_Lightweight_Adaptation_Admin {
 	 */
 	public static function plugin_row_actions() {
 		//add_filter( 'plugin_action_links_' . WPSEO_BASENAME, array( $this, 'add_action_link' ), 10, 2 );
+	}
+
+	public static function load() {
+		require_once 'class-settings.php';
+		require_once 'class-settings-page.php';
+		require_once 'class-settings-setting.php';
+		require_once 'class-settings-section.php';
+		require_once 'class-settings-field.php';
 	}
 }

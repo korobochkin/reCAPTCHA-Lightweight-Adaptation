@@ -41,7 +41,7 @@ class Recaptcha_Lightweight_Adaptation_Plugin {
 	 *
 	 * @since 1.0.0
 	 */
-	public static function __construct() {
+	public static function init() {
 		self::$plugin_name = 'recaptcha_lightweight_adaptation';
 		self::$version = '1.0.0';
 	}
@@ -61,6 +61,7 @@ class Recaptcha_Lightweight_Adaptation_Plugin {
 	}
 
 	public static function run() {
+		self::init();
 		/**
 		 * Decide which files will be loaded.
 		 */

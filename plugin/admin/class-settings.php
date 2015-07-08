@@ -9,15 +9,15 @@ class Recaptcha_Lightweight_Adaptation_Admin_Settings {
 
 	public static $settings = array();
 
-	public static $sections;
+	public static $sections = array();
+
+	public static $fields = array();
 
 	/**
 	 *
 	 */
-	public static function __construct() {
-		self::$sections = array();
-
-		self::load_deps();
+	public static function init() {
+		//self::load_deps();
 
 		// General settings page
 		self::$pages['recaptcha_lightweight_adaptation_general'] = array (
@@ -45,6 +45,24 @@ class Recaptcha_Lightweight_Adaptation_Admin_Settings {
 				'Recaptcha_Lightweight_Adaptation_Admin_Settings_Section',
 			),
 			'content' => __( 'This keys settings are required. You can get it on <a href="https://www.google.com/recaptcha/admin">Google reCAPTCHA Admin</a> page.', 'recaptcha_lightweight_adaptation' )
+		);
+
+		// Fields
+		self::$fields['site_key'] = array(
+			'settings' => array(
+				__( 'Site key', 'recaptcha_lightweight_adaptation' ),
+				'Recaptcha_Lightweight_Adaptation_Admin_Settings_Field',
+				'recaptcha_lightweight_adaptation_general',
+				'keys'
+			)
+		);
+		self::$fields['secret_key'] = array(
+			'settings' => array(
+				__( 'Secret key', 'recaptcha_lightweight_adaptation' ),
+				'Recaptcha_Lightweight_Adaptation_Admin_Settings_Field',
+				'recaptcha_lightweight_adaptation_general',
+				'keys'
+			)
 		);
 	}
 
@@ -78,12 +96,6 @@ class Recaptcha_Lightweight_Adaptation_Admin_Settings {
 		}
 	}
 
-	public static function load_deps() {
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'class-settings-page.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'class-settings-setting.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'class-settings-section.php';
-	}
-
 	public static function register_settings() {
 		// Register settings
 		if( !empty( self::$settings ) ) {
@@ -92,6 +104,7 @@ class Recaptcha_Lightweight_Adaptation_Admin_Settings {
 			}
 		}
 
+		// Register sections
 		if( !empty( self::$sections ) ) {
 			foreach ( self::$sections as $name => $value ) {
 				if( empty( self::$sections[$name]['instance'] ) ) {
@@ -107,6 +120,15 @@ class Recaptcha_Lightweight_Adaptation_Admin_Settings {
 					),
 					$name
 				);
+			}
+		}
+
+		// Register fields
+		if( !empty( self::$fields ) ) {
+			foreach( self::$fields as $name => $value ) {
+				if( empty( self::$fields[$name]['instance'] ) ) {
+					self::$fields[$name]['instance'] = new $value['settings'][1]();
+				}
 			}
 		}
 	}

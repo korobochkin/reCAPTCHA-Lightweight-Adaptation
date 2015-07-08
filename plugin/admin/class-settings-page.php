@@ -31,17 +31,16 @@ class Recaptcha_Lightweight_Adaptation_Admin_Settings_Page {
 	 */
 	public function render() {
 		?>
-		<form action='options.php' method='post'>
-
+		<div class="wrap">
 			<h2><?php echo $this->page_title; ?></h2>
-
-			<?php
-			settings_fields( $this->option_group );
-			do_settings_sections( $this->option_group );
-			submit_button();
-			?>
-
-		</form>
-	<?php
+			<form action='options.php' method='post'>
+				<?php
+				settings_fields( $this->option_group );
+				do_settings_sections( $this->option_group );
+				submit_button();
+				?>
+			</form>
+		</div>
+		<?php
 	}
 }

@@ -15,5 +15,5 @@ Text Domain: recaptcha_lightweight_adaptation
 /**
  * Load the main plugin class.
  */
-require plugin_dir_path( __FILE__ ) . 'inc/class-plugin.php';
+require 'inc/class-plugin.php';
 Recaptcha_Lightweight_Adaptation_Plugin::run();
