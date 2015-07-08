@@ -32,7 +32,10 @@ class Recaptcha_Lightweight_Adaptation_Admin_Settings {
 		);
 
 		// Settings
-		self::$settings['recaptcha_lightweight_adaptation_general'] = 'recaptcha_lightweight_adaptation';
+		self::$settings['recaptcha_lightweight_adaptation_general'] = array(
+			'recaptcha_lightweight_adaptation',
+			'Recaptcha_Lightweight_Adaptation_Admin_Settings_Setting'
+		);
 
 		// Sections
 		self::$sections['recaptcha_lightweight_adaptation_general'] = array(
@@ -77,6 +80,7 @@ class Recaptcha_Lightweight_Adaptation_Admin_Settings {
 
 	public static function load_deps() {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'class-settings-page.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'class-settings-setting.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'class-settings-section.php';
 	}
 
@@ -84,7 +88,7 @@ class Recaptcha_Lightweight_Adaptation_Admin_Settings {
 		// Register settings
 		if( !empty( self::$settings ) ) {
 			foreach( self::$settings as $name => $value ) {
-				register_setting( $name, $value );
+				register_setting( $name, $value[0], $value[1] );
 			}
 		}
 
