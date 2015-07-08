@@ -15,10 +15,10 @@ class Recaptcha_Lightweight_Adaptation_Admin {
 	 */
 	public static function init() {
 		// Register admin pages
-		add_action( 'admin_menu', array( 'Recaptcha_Lightweight_Adaptation_Admin_Settings', 'setup_pages' ) );
+		add_action( 'admin_menu', array( 'Recaptcha_Lightweight_Adaptation_Admin_Settings', 'register_pages' ) );
 
 		// Sections
-		add_action( 'admin_init', array( 'Recaptcha_Lightweight_Adaptation_Admin_Settings', 'settings_init' ) );
+		add_action( 'admin_init', array( 'Recaptcha_Lightweight_Adaptation_Admin_Settings', 'register_settings' ) );
 
 		// Добавляем ссылку на настройку плагина
 	}

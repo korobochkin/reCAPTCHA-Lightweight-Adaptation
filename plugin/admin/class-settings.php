@@ -45,7 +45,7 @@ class Recaptcha_Lightweight_Adaptation_Admin_Settings {
 		);
 	}
 
-	public static function setup_pages() {
+	public static function register_pages() {
 		if( !empty( self::$pages ) ) {
 
 			// Load and initialize each page
@@ -80,7 +80,7 @@ class Recaptcha_Lightweight_Adaptation_Admin_Settings {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'class-settings-section.php';
 	}
 
-	public static function settings_init() {
+	public static function register_settings() {
 		// Register settings
 		if( !empty( self::$settings ) ) {
 			foreach( self::$settings as $name => $value ) {
