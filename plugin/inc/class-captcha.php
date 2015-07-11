@@ -13,12 +13,13 @@ class Recaptcha_Lightweight_Adaptation_Captcha {
 		);
 	}
 
-	public static function render() {
+	public static function render( $callback_name = 'recaptcha_wp_callback' ) {
 		$options = get_option( 'recaptcha_lightweight_adaptation' );
 		if( empty( $options['site_key'] ) && is_string( $options['site_key'] ) ) {
 			printf(
-				'<div class="g-recaptcha" data-sitekey="%s"></div>',
-				$options['site_key']
+				'<div class="g-recaptcha" data-sitekey="%s" data-callback="%s"></div>',
+				$options['site_key'],
+				$callback_name
 			);
 		}
 	}
