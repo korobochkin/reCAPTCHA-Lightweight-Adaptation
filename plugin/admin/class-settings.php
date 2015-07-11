@@ -89,7 +89,7 @@ class Recaptcha_Lightweight_Adaptation_Admin_Settings {
 		);
 		add_settings_field(
 			'theme',
-			__( 'The color theme of the widget.', 'recaptcha_lightweight_adaptation' ),
+			__( 'The color theme of the widget', 'recaptcha_lightweight_adaptation' ),
 			array( self::$fields['general']['view']['theme'], 'render' ),
 			'recaptcha_lightweight_adaptation_general',
 			'view'
