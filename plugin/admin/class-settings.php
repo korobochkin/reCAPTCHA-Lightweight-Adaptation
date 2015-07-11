@@ -13,138 +13,62 @@ class Recaptcha_Lightweight_Adaptation_Admin_Settings {
 
 	public static $fields = array();
 
-	/**
-	 *
-	 */
-	public static function init() {
-		//self::load_deps();
-
-		// General settings page
-		self::$pages['recaptcha_lightweight_adaptation_general'] = array (
-			'settings' => array(
-				'options-general.php',
-				__( 'Recaptcha lightweight adaptation', 'recaptcha_lightweight_adaptation' ),
-				__( 'Recaptcha', 'recaptcha_lightweight_adaptation' ),
-				'manage_options',
-				'recaptcha-lightweight-adaptation',
-				'Recaptcha_Lightweight_Adaptation_Admin_Settings_Page'
-			)
-		);
-
-		// Settings
-		self::$settings['recaptcha_lightweight_adaptation_general'] = array(
-			'settings' => array(
-				'recaptcha_lightweight_adaptation',
-				'Recaptcha_Lightweight_Adaptation_Admin_Settings_Setting'
-			)
-		);
-
-		// Sections
-		self::$sections['recaptcha_lightweight_adaptation_general'] = array(
-			'settings' => array (
-				'keys',
-				__( 'Secret keys', 'recaptcha_lightweight_adaptation' ),
-				'Recaptcha_Lightweight_Adaptation_Admin_Settings_Section',
-			),
-			'content' => __( 'This keys settings are required. You can get it on <a href="https://www.google.com/recaptcha/admin">Google reCAPTCHA Admin</a> page.', 'recaptcha_lightweight_adaptation' )
-		);
-
-		// Fields
-		self::$fields['site_key'] = array(
-			'settings' => array(
-				__( 'Site key', 'recaptcha_lightweight_adaptation' ),
-				'Recaptcha_Lightweight_Adaptation_Admin_Settings_Field',
-				'recaptcha_lightweight_adaptation_general',
-				'keys'
-			)
-		);
-		self::$fields['secret_key'] = array(
-			'settings' => array(
-				__( 'Secret key', 'recaptcha_lightweight_adaptation' ),
-				'Recaptcha_Lightweight_Adaptation_Admin_Settings_Field',
-				'recaptcha_lightweight_adaptation_general',
-				'keys'
-			)
-		);
-	}
-
 	public static function register_pages() {
-		if( !empty( self::$pages ) ) {
-
-			// Load and initialize each page
-			foreach( self::$pages as $name => $page ) {
-
-				if( empty( self::$pages[$name]['instance'] ) ) {
-					self::$pages[$name]['instance'] = new $page['settings'][5](
-						$page['settings'][1],
-						$name
-					);
-
-					add_submenu_page(
-						$page['settings'][0],
-						$page['settings'][1],
-						$page['settings'][2],
-						$page['settings'][3],
-						$page['settings'][4],
-						array(
-							self::$pages[$name]['instance'],
-							'render'
-						)
-					);
-				}
-
-			}
-
-		}
+		self::$pages['general'] = new Recaptcha_Lightweight_Adaptation_Admin_Settings_Page(
+			__( 'Recaptcha lightweight adaptation', 'recaptcha_lightweight_adaptation' ),
+			'recaptcha_lightweight_adaptation_general'
+		);
+		add_submenu_page(
+			'options-general.php',
+			__( 'Recaptcha lightweight adaptation', 'recaptcha_lightweight_adaptation' ),
+			__( 'Recaptcha', 'recaptcha_lightweight_adaptation' ),
+			'manage_options',
+			'recaptcha-lightweight-adaptation',
+			array( self::$pages['general'], 'render' )
+		);
 	}
 
 	public static function register_settings() {
-		// Register settings
-		if( !empty( self::$settings ) ) {
-			foreach( self::$settings as $name => $value ) {
-				if( empty( self::$settings[$name]['instance'] ) ) {
-					self::$settings[$name]['instance'] = new $value['settings'][1];
-				}
-				register_setting( $name, $value['settings'][0], array( $value['settings'][1], 'sanitize' ) );
-			}
-		}
+		// Settings
+		self::$settings['general'] = new Recaptcha_Lightweight_Adaptation_Admin_Settings_Setting( 'recaptcha_lightweight_adaptation' );
+		register_setting( 'recaptcha_lightweight_adaptation_general', 'recaptcha_lightweight_adaptation', array( self::$settings['general'], 'sanitize' ) );
 
-		// Register sections
-		if( !empty( self::$sections ) ) {
-			foreach ( self::$sections as $name => $value ) {
-				if( empty( self::$sections[$name]['instance'] ) ) {
-					self::$sections[$name]['instance'] = new $value['settings'][2]( $value['content'] );
-				}
 
-				add_settings_section(
-					$value['settings'][0],
-					$value['settings'][1],
-					array(
-						self::$sections[$name]['instance'],
-						'render'
-					),
-					$name
-				);
-			}
-		}
+		// Sections
+		self::$sections['general']['keys'] = new Recaptcha_Lightweight_Adaptation_Admin_Settings_Section(
+			__( 'This keys settings are required. You can get it on <a href="https://www.google.com/recaptcha/admin">Google reCAPTCHA Admin</a> page.', 'recaptcha_lightweight_adaptation' )
+		);
+		add_settings_section(
+			'keys',
+			__( 'Secret keys', 'recaptcha_lightweight_adaptation' ),
+			array( self::$sections['general']['keys'], 'render' ),
+			'recaptcha_lightweight_adaptation_general'
+		);
 
-		// Register fields
-		if( !empty( self::$fields ) ) {
-			foreach( self::$fields as $name => $value ) {
-				if( empty( self::$fields[$name]['instance'] ) ) {
-					self::$fields[$name]['instance'] = new $value['settings'][1]();
-				}
-				add_settings_field(
-					$name,
-					$value['settings'][0],
-					array(
-						self::$fields[$name]['instance'],
-						'render'
-					),
-					$value['settings'][2],
-					$value['settings'][3]
-				);
-			}
-		}
+
+		// Fields
+		// Site Key
+		self::$fields['general']['keys']['site_key'] = new Recaptcha_Lightweight_Adaptation_Admin_Settings_Field(
+			array( 'recaptcha_lightweight_adaptation', 'site_key' )
+		);
+		add_settings_field(
+			'site_key',
+			__( 'Site key', 'recaptcha_lightweight_adaptation' ),
+			array( self::$fields['general']['keys']['site_key'], 'render' ),
+			'recaptcha_lightweight_adaptation_general',
+			'keys'
+		);
+
+		// Secret Key
+		self::$fields['general']['keys']['secret_key'] = new Recaptcha_Lightweight_Adaptation_Admin_Settings_Field(
+			array( 'recaptcha_lightweight_adaptation', 'secret_key' )
+		);
+		add_settings_field(
+			'secret_key',
+			__( 'Secret key', 'recaptcha_lightweight_adaptation' ),
+			array( self::$fields['general']['keys']['secret_key'], 'render' ),
+			'recaptcha_lightweight_adaptation_general',
+			'keys'
+		);
 	}
 }
