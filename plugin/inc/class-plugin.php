@@ -54,6 +54,7 @@ class Recaptcha_Lightweight_Adaptation_Plugin {
 		else {
 			//require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class';
 		}
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'inc/class-captcha.php';
 	}
 
 	public static function translate() {
@@ -72,7 +73,7 @@ class Recaptcha_Lightweight_Adaptation_Plugin {
 		 */
 
 		/**
-		 *
+		 * Стоит написать здесь функционал создания настроек при активации плагина.
 		 */
 
 	}
