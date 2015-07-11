@@ -35,6 +35,7 @@ class Recaptcha_Lightweight_Adaptation_Admin_Settings {
 
 
 		// Sections
+		// Keys
 		self::$sections['general']['keys'] = new Recaptcha_Lightweight_Adaptation_Admin_Settings_Section(
 			__( 'This keys settings are required. You can get it on <a href="https://www.google.com/recaptcha/admin">Google reCAPTCHA Admin</a> page.', 'recaptcha_lightweight_adaptation' )
 		);
@@ -42,6 +43,17 @@ class Recaptcha_Lightweight_Adaptation_Admin_Settings {
 			'keys',
 			__( 'Secret keys', 'recaptcha_lightweight_adaptation' ),
 			array( self::$sections['general']['keys'], 'render' ),
+			'recaptcha_lightweight_adaptation_general'
+		);
+
+		// View
+		self::$sections['general']['view'] = new Recaptcha_Lightweight_Adaptation_Admin_Settings_Section(
+			__( 'Visual settings of the widget.', 'recaptcha_lightweight_adaptation' )
+		);
+		add_settings_section(
+			'view',
+			__( 'View', 'recaptcha_lightweight_adaptation' ),
+			array( self::$sections['general']['view'], 'render' ),
 			'recaptcha_lightweight_adaptation_general'
 		);
 
@@ -69,6 +81,18 @@ class Recaptcha_Lightweight_Adaptation_Admin_Settings {
 			array( self::$fields['general']['keys']['secret_key'], 'render' ),
 			'recaptcha_lightweight_adaptation_general',
 			'keys'
+		);
+
+		// Theme (dark | light)
+		self::$fields['general']['view']['theme'] = new Recaptcha_Lightweight_Adaptation_Admin_Settings_Field(
+			array( 'recaptcha_lightweight_adaptation', 'theme' )
+		);
+		add_settings_field(
+			'theme',
+			__( 'The color theme of the widget.', 'recaptcha_lightweight_adaptation' ),
+			array( self::$fields['general']['view']['theme'], 'render' ),
+			'recaptcha_lightweight_adaptation_general',
+			'view'
 		);
 	}
 }
