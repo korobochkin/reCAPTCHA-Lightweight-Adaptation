@@ -30,8 +30,9 @@ class Recaptcha_Lightweight_Adaptation_Admin_Settings {
 
 	public static function register_settings() {
 		// Settings
-		self::$settings['general'] = new Recaptcha_Lightweight_Adaptation_Admin_Settings_Setting( 'recaptcha_lightweight_adaptation' );
+		self::$settings['general'] = new Recaptcha_Lightweight_Adaptation_Admin_Settings_Setting_General( 'recaptcha_lightweight_adaptation' );
 		register_setting( 'recaptcha_lightweight_adaptation_general', 'recaptcha_lightweight_adaptation', array( self::$settings['general'], 'sanitize' ) );
+
 
 
 		// Sections
@@ -56,6 +57,18 @@ class Recaptcha_Lightweight_Adaptation_Admin_Settings {
 			array( self::$sections['general']['view'], 'render' ),
 			'recaptcha_lightweight_adaptation_general'
 		);
+
+		// Where to show
+		self::$sections['general']['locations'] = new Recaptcha_Lightweight_Adaptation_Admin_Settings_Section(
+			__( 'Where to show Recaptcha widget (and validate).', 'recaptcha_lightweight_adaptation' )
+		);
+		add_settings_section(
+			'locations',
+			__( 'Locations', 'recaptcha_lightweight_adaptation' ),
+			array( self::$sections['general']['locations'], 'render' ),
+			'recaptcha_lightweight_adaptation_general'
+		);
+
 
 
 		// Fields
@@ -110,6 +123,24 @@ class Recaptcha_Lightweight_Adaptation_Admin_Settings {
 			array( self::$fields['general']['view']['language'], 'render' ),
 			'recaptcha_lightweight_adaptation_general',
 			'view'
+		);
+
+		// Locations
+		// Theme (dark | light)
+		self::$fields['general']['locations']['locations'] = new Recaptcha_Lightweight_Adaptation_Admin_Settings_Field_Checkbox(
+			array( 'recaptcha_lightweight_adaptation', 'locations' ),
+			array(
+				'signup' => __( 'The signup page (<code>wp-login.php?action=register</code>).', 'recaptcha_lightweight_adaptation' ),
+				'login' => __( 'The login page (authentication) (<code>wp-login.php</code>).', 'recaptcha_lightweight_adaptation' ),
+				'reset_password' => __( 'The reset password page (<code>wp-login.php?action=lostpassword</code>).', 'recaptcha_lightweight_adaptation' )
+			)
+		);
+		add_settings_field(
+			'locations',
+			__( 'The pages which shows up the Recaptcha widget', 'recaptcha_lightweight_adaptation' ),
+			array( self::$fields['general']['locations']['locations'], 'render' ),
+			'recaptcha_lightweight_adaptation_general',
+			'locations'
 		);
 	}
 }

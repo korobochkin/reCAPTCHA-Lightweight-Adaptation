@@ -33,6 +33,16 @@ class Recaptcha_Lightweight_Adaptation_Admin_Settings_Setting_General {
 			$new_values['language'] = sanitize_text_field( (string)$old_values['language'] );
 		}
 
+		// Locations
+		$new_values['locations'] = array();
+		if( !empty( $old_values['locations'] ) ) {
+			foreach( $old_values['locations'] as $key => $value ) {
+				if( !empty( $key ) && $value === '1' ) {
+					$new_values['locations'][] = $key;
+				}
+			}
+		}
+
 		return $new_values;
 	}
 }

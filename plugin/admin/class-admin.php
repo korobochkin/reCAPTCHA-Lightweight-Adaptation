@@ -40,5 +40,6 @@ class Recaptcha_Lightweight_Adaptation_Admin {
 		require_once 'class-settings-section.php';
 		require_once 'class-settings-field.php';
 			require_once 'class-settings-field-radio.php';
+			require_once 'class-settings-field-checkbox.php';
 	}
 }

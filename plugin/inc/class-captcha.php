@@ -6,7 +6,6 @@ class Recaptcha_Lightweight_Adaptation_Captcha {
 	public static function init() {
 		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'scripts_styles' ) );
 		add_action( 'login_enqueue_scripts', array( __CLASS__, 'scripts_styles' ) );
-		//self::scripts_styles();
 	}
 
 	public static function scripts_styles() {
