@@ -19,13 +19,18 @@ class Recaptcha_Lightweight_Adaptation_Captcha {
 		);
 	}
 
-	public static function render( $callback_name = 'recaptcha_wp_callback' ) {
+	public static function render( $size = 'compact', $tabindex = 'none', $callback = 'recaptcha_wp_callback', $expired_callback = 'recaptcha_wp_expired_callback' ) {
 		$options = get_option( 'recaptcha_lightweight_adaptation' );
 		if( !empty( $options['site_key'] ) && is_string( $options['site_key'] ) ) {
 			printf(
-				'<div class="g-recaptcha" data-sitekey="%s" data-callback="%s" data-size="compact"></div>',
-				$options['site_key'],
-				$callback_name
+				'<div class="g-recaptcha" data-sitekey="%s" data-theme="%s" data-type="%s" data-size="%s" data-tabindex="%s" data-callback="%s" data-expired-callback="%s"></div>',
+				esc_attr( $options['site_key'] ),
+				esc_attr( ( empty( $options['theme'] ) ? $options['theme'] : 'light' ) ),
+				'',
+				esc_attr( $size ),
+				esc_attr( $tabindex ),
+				esc_attr( $callback ),
+				esc_attr( $expired_callback )
 			);
 		}
 	}
