@@ -1,6 +1,6 @@
 <?php
 // Добавление капчки на страницу регистрации, проверка данных формы, вывод ошибок.
-class Recaptcha_Lightweight_Adaptation_Signup {
+class Recaptcha_Lightweight_Adaptation_WP_Login {
 
 	public static function init() {
 		add_action( 'login_enqueue_scripts', array( __CLASS__, 'scripts' ) );

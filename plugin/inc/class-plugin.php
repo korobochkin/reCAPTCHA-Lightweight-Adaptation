@@ -60,7 +60,7 @@ class Recaptcha_Lightweight_Adaptation_Plugin {
 		Recaptcha_Lightweight_Adaptation_Captcha::init();
 
 		// Captcha on wp-login.php page
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-wp-user-signup.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-wp-login.php';
 	}
 
 	public static function translate() {
