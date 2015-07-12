@@ -84,7 +84,7 @@ class Recaptcha_Lightweight_Adaptation_Admin_Settings {
 		);
 
 		// Theme (dark | light)
-		self::$fields['general']['view']['theme'] = new Recaptcha_Lightweight_Adaptation_Admin_Settings_Field(
+		/*self::$fields['general']['view']['theme'] = new Recaptcha_Lightweight_Adaptation_Admin_Settings_Field(
 			array( 'recaptcha_lightweight_adaptation', 'theme' )
 		);
 		add_settings_field(
@@ -93,6 +93,6 @@ class Recaptcha_Lightweight_Adaptation_Admin_Settings {
 			array( self::$fields['general']['view']['theme'], 'render' ),
 			'recaptcha_lightweight_adaptation_general',
 			'view'
-		);
+		);*/
 	}
 }

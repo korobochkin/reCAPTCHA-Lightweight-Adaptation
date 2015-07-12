@@ -20,7 +20,7 @@ class Recaptcha_Lightweight_Adaptation_Admin_Settings_Setting_General {
 			$new_values['secret_key'] = sanitize_text_field( (string)$old_values['secret_key'] );
 		}
 
-		// View
+		// View (dark | light)
 		if( isset( $old_values['theme'] ) && $old_values['theme'] = 'dark' ) {
 			$new_values['theme'] = 'dark';
 		}
