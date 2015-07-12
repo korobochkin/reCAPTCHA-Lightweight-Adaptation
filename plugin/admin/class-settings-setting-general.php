@@ -51,7 +51,7 @@ class Recaptcha_Lightweight_Adaptation_Admin_Settings_Setting_General {
 		}
 
 		// View (dark | light)
-		if( isset( $old_values['theme'] ) && $old_values['theme'] = 'dark' ) {
+		if( isset( $old_values['theme'] ) && $old_values['theme'] == 'dark' ) {
 			$new_values['theme'] = 'dark';
 		}
 		else {
