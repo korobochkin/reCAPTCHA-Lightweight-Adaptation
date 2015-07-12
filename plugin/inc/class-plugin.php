@@ -59,6 +59,10 @@ class Recaptcha_Lightweight_Adaptation_Plugin {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'inc/class-captcha.php';
 		Recaptcha_Lightweight_Adaptation_Captcha::init();
 
+		// Google API
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'inc/class-api.php';
+		Recaptcha_Lightweight_Adaptation_API::init();
+
 		// Captcha on wp-login.php page
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-wp-login.php';
 	}
@@ -75,7 +79,7 @@ class Recaptcha_Lightweight_Adaptation_Plugin {
 		self::load_dependencies();
 
 		// Enable Recaptcha on wp-login.php page. You can disable this via remove_action().
-		add_action( 'init', array( 'Recaptcha_Lightweight_Adaptation_Signup', 'init' ) );
+		add_action( 'init', array( 'Recaptcha_Lightweight_Adaptation_WP_Login', 'init' ) );
 		/**
 		 * Load translates.
 		 */

@@ -6,6 +6,7 @@ class Recaptcha_Lightweight_Adaptation_WP_Login {
 		add_action( 'login_enqueue_scripts', array( __CLASS__, 'scripts' ) );
 		add_action( 'register_form', array( __CLASS__, 'render' ) );
 
+		add_filter( 'registration_errors', array( __CLASS__, 'registration_errors' ), 10, 3 );
 		/*add_action( 'wp_enqueue_scripts', array( __CLASS__, 'scripts_styles' ) );
 		add_action( 'login_enqueue_scripts', array( __CLASS__, 'scripts_styles' ) );
 		*/
@@ -19,5 +20,37 @@ class Recaptcha_Lightweight_Adaptation_WP_Login {
 		echo '<div style="margin: 10px 0;">';
 		Recaptcha_Lightweight_Adaptation_Captcha::render();
 		echo '</div>';
+	}
+
+	public static function registration_errors( $errors, $sanitized_user_login, $user_email ) {
+		if( !empty( $_POST['g-recaptcha-response'] ) ) {
+			$validate = Recaptcha_Lightweight_Adaptation_API::validate( $_POST['g-recaptcha-response'] );
+			//$validate = Recaptcha_Lightweight_Adaptation_API::validate( 'jkhkjh' );
+
+			// Not a robot
+			if( $validate === true ) {
+				return $errors;
+			}
+			// Errors with captcha
+			elseif( is_wp_error( $validate ) ) {
+				if( !empty( $validate->errors ) ) {
+					foreach( $validate->errors as $code => $new_error ) {
+						$errors->add( $code, '<strong>ERROR</strong> ' . $new_error[0] );
+					}
+				}
+				// We have errors object but no errors inside.
+				$errors->add( 'unknown_result_of_recaptcha_validation', __( '<strong>ERROR</strong> Unknown result of the Recaptcha Light Adaptation plugin validation process.', 'recaptcha_lightweight_adaptation' ) );
+			}
+			// Errors with captcha
+			else {
+				// Unknown result after validation
+				$errors->add( 'unknown_result_of_recaptcha_validation', __( '<strong>ERROR</strong> Unknown result of the Recaptcha Light Adaptation plugin validation process.', 'recaptcha_lightweight_adaptation' ) );
+			}
+		}
+		else {
+			$errors->add( 'missing_recaptcha_code', __( '<strong>ERROR</strong>. Checkin „I’m not a robot“ checkbox.', 'recaptcha_lightweight_adaptation' ) );
+		}
+
+		return $errors;
 	}
 }
