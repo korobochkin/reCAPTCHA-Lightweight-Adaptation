@@ -130,9 +130,8 @@ class Recaptcha_Lightweight_Adaptation_Admin_Settings {
 		self::$fields['general']['locations']['locations'] = new Recaptcha_Lightweight_Adaptation_Admin_Settings_Field_Checkbox(
 			array( 'recaptcha_lightweight_adaptation', 'locations' ),
 			array(
-				'signup' => __( 'The signup page (<code>wp-login.php?action=register</code>).', 'recaptcha_lightweight_adaptation' ),
-				'login' => __( 'The login page (authentication) (<code>wp-login.php</code>).', 'recaptcha_lightweight_adaptation' ),
-				'reset_password' => __( 'The reset password page (<code>wp-login.php?action=lostpassword</code>).', 'recaptcha_lightweight_adaptation' )
+				'register' => __( 'The signup page (<code>wp-login.php?action=register</code>).', 'recaptcha_lightweight_adaptation' ),
+				'lostpassword' => __( 'The reset password page (<code>wp-login.php?action=lostpassword</code>).', 'recaptcha_lightweight_adaptation' )
 			)
 		);
 		add_settings_field(
