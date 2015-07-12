@@ -33,7 +33,7 @@ class Recaptcha_Lightweight_Adaptation_Captcha {
 			printf(
 				'<div class="g-recaptcha" data-sitekey="%s" data-theme="%s" data-type="%s" data-size="%s" data-tabindex="%s" data-callback="%s" data-expired-callback="%s"></div>',
 				esc_attr( $options['site_key'] ),
-				esc_attr( ( empty( $options['theme'] ) ? $options['theme'] : 'light' ) ),
+				esc_attr( ( !empty( $options['theme'] ) ? $options['theme'] : 'light' ) ),
 				'',
 				esc_attr( $size ),
 				esc_attr( $tabindex ),
