@@ -46,16 +46,19 @@ class Recaptcha_Lightweight_Adaptation_Plugin {
 		self::$version = '1.0.0';
 	}
 
+	/**
+	 * Load necessary files.
+	 *
+	 * @since 1.0.0
+	 */
 	public static function load_dependencies() {
 		if( is_admin() ) {
+			// The main admin file.
 			require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-admin.php';
 			Recaptcha_Lightweight_Adaptation_Admin::init();
 		}
-		else {
-			//require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class';
-		}
 
-		// The main class for ouput captcha and other stuff
+		// The main class for output captcha and other stuff
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'inc/class-captcha.php';
 		Recaptcha_Lightweight_Adaptation_Captcha::init();
 
@@ -67,12 +70,23 @@ class Recaptcha_Lightweight_Adaptation_Plugin {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-wp-login.php';
 	}
 
+	/**
+	 * Translation
+	 *
+	 * @since 1.0.0
+	 */
 	public static function translate() {
 
 	}
 
+	/**
+	 * Run the all stuff.
+	 *
+	 * @since 1.0.0
+	 */
 	public static function run() {
 		self::init();
+
 		/**
 		 * Decide which files will be loaded.
 		 */
@@ -80,6 +94,7 @@ class Recaptcha_Lightweight_Adaptation_Plugin {
 
 		// Enable Recaptcha on wp-login.php page. You can disable this via remove_action().
 		add_action( 'init', array( 'Recaptcha_Lightweight_Adaptation_WP_Login', 'init' ) );
+
 		/**
 		 * Load translates.
 		 */
@@ -87,6 +102,5 @@ class Recaptcha_Lightweight_Adaptation_Plugin {
 		/**
 		 * Стоит написать здесь функционал создания настроек при активации плагина.
 		 */
-
 	}
 }
