@@ -54,7 +54,13 @@ class Recaptcha_Lightweight_Adaptation_Plugin {
 		else {
 			//require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class';
 		}
+
+		// The main class for ouput captcha and other stuff
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'inc/class-captcha.php';
+		Recaptcha_Lightweight_Adaptation_Captcha::init();
+
+		// Captcha on wp-login.php page
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-wp-user-signup.php';
 	}
 
 	public static function translate() {
@@ -68,6 +74,8 @@ class Recaptcha_Lightweight_Adaptation_Plugin {
 		 */
 		self::load_dependencies();
 
+		// Enable Recaptcha on wp-login.php page. You can disable this via remove_action().
+		add_action( 'init', array( 'Recaptcha_Lightweight_Adaptation_Signup', 'init' ) );
 		/**
 		 * Load translates.
 		 */
