@@ -3,25 +3,30 @@ class Recaptcha_Lightweight_Adaptation_Admin_Settings_Field_Radio {
 
 	protected $option_name;
 
-	protected $radios;
+	protected $option_variants;
 
-	public function __construct( $option_name ) {
+	public function __construct( $option_name, $option_variants ) {
 		$this->option_name = $option_name;
+		$this->option_variants = $option_variants;
 	}
 
 	public function render() {
-		$options = get_option( $this->option_name[0], array() );
-		if( empty( $options ) || empty( $options[$this->option_name[1]] ) ) {
-			$value = '';
+		$options = get_option( $this->option_name[0] );
+		foreach( $this->option_variants as $name => $text ) {
+			if( !empty( $options[$this->option_name[1]] ) ) {
+				$checked = checked($name, $options[$this->option_name[1]], false);
+			}
+			else {
+				$checked = '';
+			}
+			printf(
+				'<p><label><input name="%s[%s]" type="radio" value="%s" class="tog" %s>%s</label></p>',
+				$this->option_name[0],
+				$this->option_name[1],
+				$name,
+				$checked,
+				$text
+			);
 		}
-		else {
-			$value = $options[$this->option_name[1]];
-		}
-		printf(
-			'<input name="%s[%s]" type="text" value="%s" class="regular-text">',
-			$this->option_name[0],
-			$this->option_name[1],
-			esc_attr( $value )
-		);
 	}
 }

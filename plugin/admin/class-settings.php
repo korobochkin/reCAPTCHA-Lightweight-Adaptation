@@ -84,8 +84,12 @@ class Recaptcha_Lightweight_Adaptation_Admin_Settings {
 		);
 
 		// Theme (dark | light)
-		/*self::$fields['general']['view']['theme'] = new Recaptcha_Lightweight_Adaptation_Admin_Settings_Field(
-			array( 'recaptcha_lightweight_adaptation', 'theme' )
+		self::$fields['general']['view']['theme'] = new Recaptcha_Lightweight_Adaptation_Admin_Settings_Field_Radio(
+			array( 'recaptcha_lightweight_adaptation', 'theme' ),
+			array(
+				'light' => __( 'Light', 'recaptcha_lightweight_adaptation' ),
+				'dark' => __( 'Dark', 'recaptcha_lightweight_adaptation' )
+			)
 		);
 		add_settings_field(
 			'theme',
@@ -93,6 +97,6 @@ class Recaptcha_Lightweight_Adaptation_Admin_Settings {
 			array( self::$fields['general']['view']['theme'], 'render' ),
 			'recaptcha_lightweight_adaptation_general',
 			'view'
-		);*/
+		);
 	}
 }
