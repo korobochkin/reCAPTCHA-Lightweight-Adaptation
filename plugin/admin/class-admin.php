@@ -11,7 +11,9 @@
 class Recaptcha_Lightweight_Adaptation_Admin {
 
 	/**
+	 * Set up admin pages and settings.
 	 *
+	 * @since 1.0.0
 	 */
 	public static function init() {
 		self::load_deps();
@@ -27,11 +29,18 @@ class Recaptcha_Lightweight_Adaptation_Admin {
 
 	/**
 	 * Output the row actions links on the WordPress Plugins list page.
+	 *
+	 * @since 1.0.0
 	 */
 	public static function plugin_row_actions() {
 		//add_filter( 'plugin_action_links_' . WPSEO_BASENAME, array( $this, 'add_action_link' ), 10, 2 );
 	}
 
+	/**
+	 * Load classes for construct pages, sections and fields via Settings API.
+	 *
+	 * @since 1.0.0
+	 */
 	public static function load_deps() {
 		require_once 'class-settings.php';
 		require_once 'class-settings-page.php';

@@ -7,8 +7,26 @@
  */
 class Recaptcha_Lightweight_Adaptation_Admin_Settings_Page {
 
+	/**
+	 * Page settings title.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @access protected
+	 *
+	 * @var string $page_title
+	 */
 	protected $page_title;
 
+	/**
+	 * Option which stores content of this setting in wp_options table.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @access protected
+	 *
+	 * @var string $option_group
+	 */
 	protected $option_group;
 
 	/**

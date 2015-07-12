@@ -1,18 +1,61 @@
 <?php
 
+/**
+ * Class Recaptcha_Lightweight_Adaptation_Admin_Settings
+ *
+ * @since 1.0.0
+ */
 class Recaptcha_Lightweight_Adaptation_Admin_Settings {
 
 	/**
-	 * @var
+	 * List of the admin pages and links to their instances.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @access public
+	 *
+	 * @var array $pages
 	 */
 	public static $pages = array();
 
+	/**
+	 * List of the admin settings and links to their instances.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @access public
+	 *
+	 * @var array $settings
+	 */
 	public static $settings = array();
 
+	/**
+	 * List of the admin sections and links to their instances.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @access public
+	 *
+	 * @var array $sections
+	 */
 	public static $sections = array();
 
+	/**
+	 * List of the admin settings fields and links to their instances.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @acess public
+	 *
+	 * @var array
+	 */
 	public static $fields = array();
 
+	/**
+	 * Register settings pages via Settings API.
+	 *
+	 * @since 1.0.0
+	 */
 	public static function register_pages() {
 		self::$pages['general'] = new Recaptcha_Lightweight_Adaptation_Admin_Settings_Page(
 			__( 'Recaptcha lightweight adaptation', 'recaptcha_lightweight_adaptation' ),
@@ -28,6 +71,11 @@ class Recaptcha_Lightweight_Adaptation_Admin_Settings {
 		);
 	}
 
+	/**
+	 * Register settings, sections and fields via Settings API.
+	 *
+	 * @since 1.0.0
+	 */
 	public static function register_settings() {
 		// Settings
 		self::$settings['general'] = new Recaptcha_Lightweight_Adaptation_Admin_Settings_Setting_General( 'recaptcha_lightweight_adaptation' );

@@ -1,13 +1,43 @@
 <?php
 
+/**
+ * Class Recaptcha_Lightweight_Adaptation_Admin_Settings_Setting_General
+ *
+ * @since 1.0.0
+ */
 class Recaptcha_Lightweight_Adaptation_Admin_Settings_Setting_General {
 
+	/**
+	 * Name of the option in wp_options table.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @access protected
+	 *
+	 * @var string $option_name
+	 */
 	protected $option_name;
 
+	/**
+	 * Construct.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param string $option_name
+	 */
 	public function __construct( $option_name ) {
 		$this->option_name = $option_name;
 	}
 
+	/**
+	 * Sanitize all data.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param array $old_values User submitted values.
+	 *
+	 * @return array
+	 */
 	public function sanitize( $old_values ) {
 		$new_values = get_option( $this->option_name );
 

@@ -1,13 +1,50 @@
 <?php
 // Взаимодействие с API от Гугла
+/**
+ * Class Recaptcha_Lightweight_Adaptation_API
+ *
+ * @since 1.0.0
+ */
 class Recaptcha_Lightweight_Adaptation_API {
 
+	/**
+	 * API Endpoint.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @access protected
+	 *
+	 * @var string $url
+	 */
 	protected static $url;
 
+	/**
+	 * List of available API Errors.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @access protected
+	 *
+	 * @var array $api_errors
+	 */
 	protected static $api_errors;
 
+	/**
+	 * List of the plugin errors.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @access protected
+	 *
+	 * @var array $plugin_errors
+	 */
 	protected static $plugin_errors;
 
+	/**
+	 * Set up errors and other stuff.
+	 *
+	 * @since 1.0.0
+	 */
 	public static function init() {
 		self::$url = 'https://www.google.com/recaptcha/api/siteverify';
 
@@ -33,6 +70,15 @@ class Recaptcha_Lightweight_Adaptation_API {
 		);
 	}
 
+	/**
+	 * Function to validate Captcha input from user.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param string $response User captcha key.
+	 *
+	 * @return array|bool|WP_Error True if all good, WP_Error obj if something wrong.
+	 */
 	public static function validate( $response ) {
 		$secret = get_option( 'recaptcha_lightweight_adaptation' );
 		if( empty( $response ) || empty( $secret['secret_key'] ) || !is_string( $response ) || !is_string( $secret['secret_key'] ) ) {

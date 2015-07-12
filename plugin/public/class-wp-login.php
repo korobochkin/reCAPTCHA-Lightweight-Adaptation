@@ -1,7 +1,17 @@
 <?php
 // Добавление капчки на страницу регистрации, проверка данных формы, вывод ошибок.
+/**
+ * Class Recaptcha_Lightweight_Adaptation_WP_Login
+ *
+ * @since 1.0.0
+ */
 class Recaptcha_Lightweight_Adaptation_WP_Login {
 
+	/**
+	 * Add stuff on wp-login.php page.
+	 *
+	 * @since 1.0.0
+	 */
 	public static function init() {
 		$settings = get_option( 'recaptcha_lightweight_adaptation' );
 		if( !empty( $settings['locations'] ) && is_array( $settings['locations'] ) ) {
@@ -27,16 +37,37 @@ class Recaptcha_Lightweight_Adaptation_WP_Login {
 		*/
 	}
 
+	/**
+	 * Scripts.
+	 *
+	 * @since 1.0.0
+	 */
 	public static function scripts() {
 		wp_enqueue_script( 'google-recaptcha' );
 	}
 
+	/**
+	 * Print the widget.
+	 *
+	 * @since 1.0.0
+	 */
 	public static function render() {
 		echo '<div style="margin: 10px 0;">';
 		Recaptcha_Lightweight_Adaptation_Captcha::render();
 		echo '</div>';
 	}
 
+	/**
+	 * Validate form submit.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param $errors
+	 * @param $sanitized_user_login
+	 * @param $user_email
+	 *
+	 * @return mixed
+	 */
 	public static function registration_errors( $errors, $sanitized_user_login, $user_email ) {
 		if( !empty( $_POST['g-recaptcha-response'] ) ) {
 			$validate = Recaptcha_Lightweight_Adaptation_API::validate( $_POST['g-recaptcha-response'] );
@@ -71,6 +102,16 @@ class Recaptcha_Lightweight_Adaptation_WP_Login {
 		return $errors;
 	}
 
+	/**
+	 * Validate pass reset submit.
+	 *
+	 * @submit 1.0.0
+	 *
+	 * @param $result
+	 * @param $user_id
+	 *
+	 * @return WP_Error
+	 */
 	public static function allow_password_reset( $result, $user_id ) {
 		$validate = self::default_validate();
 		if( is_wp_error( $validate ) ) {
@@ -82,6 +123,13 @@ class Recaptcha_Lightweight_Adaptation_WP_Login {
 		return $result;
 	}
 
+	/**
+	 * Default validate submit.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return bool|WP_Error
+	 */
 	public static function default_validate() {
 		$errors = new WP_Error();
 
