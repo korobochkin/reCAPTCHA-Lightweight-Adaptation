@@ -48,7 +48,7 @@ class Recaptcha_Lightweight_Adaptation_Admin_Settings {
 
 		// View
 		self::$sections['general']['view'] = new Recaptcha_Lightweight_Adaptation_Admin_Settings_Section(
-			__( 'Visual settings of the widget.', 'recaptcha_lightweight_adaptation' )
+			__( 'Visual settings of the Captcha block (widget).', 'recaptcha_lightweight_adaptation' )
 		);
 		add_settings_section(
 			'view',
