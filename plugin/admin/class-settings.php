@@ -98,5 +98,18 @@ class Recaptcha_Lightweight_Adaptation_Admin_Settings {
 			'recaptcha_lightweight_adaptation_general',
 			'view'
 		);
+
+		// Language
+		self::$fields['general']['view']['language'] = new Recaptcha_Lightweight_Adaptation_Admin_Settings_Field(
+			array( 'recaptcha_lightweight_adaptation', 'language' ),
+			__( 'You can specify many of languages for Captcha widget. The list of available lanuage codes at <a href="https://developers.google.com/recaptcha/docs/language" target="_blank">Google Language codes</a>.', 'recaptcha_lightweight_adaptation' )
+		);
+		add_settings_field(
+			'language',
+			__( 'Language', 'recaptcha_lightweight_adaptation' ),
+			array( self::$fields['general']['view']['language'], 'render' ),
+			'recaptcha_lightweight_adaptation_general',
+			'view'
+		);
 	}
 }

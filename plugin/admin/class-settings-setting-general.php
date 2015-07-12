@@ -28,6 +28,11 @@ class Recaptcha_Lightweight_Adaptation_Admin_Settings_Setting_General {
 			$new_values['theme'] = 'light';
 		}
 
+		// Language
+		if( isset( $old_values['language'] ) ) {
+			$new_values['language'] = sanitize_text_field( (string)$old_values['language'] );
+		}
+
 		return $new_values;
 	}
 }

@@ -10,9 +10,17 @@ class Recaptcha_Lightweight_Adaptation_Captcha {
 	}
 
 	public static function scripts_styles() {
+		$options = get_option( 'recaptcha_lightweight_adaptation' );
+		if( !empty( $options['language'] ) ) {
+			$hl = $options['language'];
+		}
+		else {
+			$hl = 'en';
+		}
+
 		wp_register_script(
 			'google-recaptcha',
-			'//www.google.com/recaptcha/api.js',
+			esc_url( add_query_arg( array( 'hl' => $hl ), '//www.google.com/recaptcha/api.js') ),
 			array(),
 			'1.0.0',
 			true
