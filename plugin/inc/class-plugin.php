@@ -76,7 +76,11 @@ class Recaptcha_Lightweight_Adaptation_Plugin {
 	 * @since 1.0.0
 	 */
 	public static function translate() {
-
+		load_plugin_textdomain(
+			self::$plugin_name,
+			false,
+			dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/'
+		);
 	}
 
 	/**
@@ -98,6 +102,7 @@ class Recaptcha_Lightweight_Adaptation_Plugin {
 		/**
 		 * Load translates.
 		 */
+		self::translate();
 
 		/**
 		 * Стоит написать здесь функционал создания настроек при активации плагина.
