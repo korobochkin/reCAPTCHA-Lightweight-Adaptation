@@ -39,7 +39,7 @@ class Recaptcha_Lightweight_Adaptation_Admin_Settings_Setting_General {
 	 * @return array
 	 */
 	public function sanitize( $old_values ) {
-		$new_values = get_option( $this->option_name );
+		$new_values = array();
 
 		// Keys
 		if( isset( $old_values['site_key'] ) ) {
@@ -64,11 +64,15 @@ class Recaptcha_Lightweight_Adaptation_Admin_Settings_Setting_General {
 		}
 
 		// Locations
-		$new_values['locations'] = array();
-		if( !empty( $old_values['locations'] ) ) {
+		if( !empty( $old_values['locations'] ) && is_array( $old_values['locations'] ) ) {
+			$new_values['locations'] = array();
 			foreach( $old_values['locations'] as $key => $value ) {
-				if( !empty( $key ) && $value === '1' ) {
-					$new_values['locations'][] = $key;
+				if( array_key_exists( $key, Recaptcha_Lightweight_Adaptation_Admin_Settings::$fields['general']['locations']['locations']->option_variants ) ) {
+					// Check value
+					$value = (bool)$value;
+					if( $value ) {
+						$new_values['locations'][$key] = $value;
+					}
 				}
 			}
 		}

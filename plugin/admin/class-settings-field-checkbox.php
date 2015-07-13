@@ -23,11 +23,11 @@ class Recaptcha_Lightweight_Adaptation_Admin_Settings_Field_Checkbox {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @access protected
+	 * @access public
 	 *
 	 * @var array $option_variants
 	 */
-	protected $option_variants;
+	public $option_variants;
 
 	/**
 	 * Register stuff for input.
@@ -57,7 +57,7 @@ class Recaptcha_Lightweight_Adaptation_Admin_Settings_Field_Checkbox {
 			}
 			$br = true;
 			if( !empty( $options[$this->option_name[1]] ) ) {
-				$checked = checked( in_array( $name, $options[$this->option_name[1]]), true, false );
+				$checked = checked( array_key_exists( $name, $options[$this->option_name[1]]), true, false );
 			}
 			else {
 				$checked = '';
