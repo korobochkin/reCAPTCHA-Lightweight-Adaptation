@@ -96,7 +96,7 @@ class Recaptcha_Lightweight_Adaptation_WP_Login {
 			}
 		}
 		else {
-			$errors->add( 'missing_recaptcha_code', __( '<strong>ERROR</strong>. Checkin „I’m not a robot“ checkbox.', 'recaptcha_lightweight_adaptation' ) );
+			$errors->add( 'missing_recaptcha_code', __( '<strong>ERROR</strong>. Check „I’m not a robot“ checkbox.', 'recaptcha_lightweight_adaptation' ) );
 		}
 
 		return $errors;
@@ -160,7 +160,7 @@ class Recaptcha_Lightweight_Adaptation_WP_Login {
 			}
 		}
 		else {
-			$errors->add( 'missing_recaptcha_code', __( '<strong>ERROR</strong>. Checkin „I’m not a robot“ checkbox.', 'recaptcha_lightweight_adaptation' ) );
+			$errors->add( 'missing_recaptcha_code', __( '<strong>ERROR</strong>. Check „I’m not a robot“ checkbox.', 'recaptcha_lightweight_adaptation' ) );
 		}
 
 		return $errors;
