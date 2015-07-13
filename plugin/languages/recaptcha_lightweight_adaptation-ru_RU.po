@@ -1,0 +1,179 @@
+# Copyright (C) 2015 reCAPTCHA Lightweight Adaptation
+# This file is distributed under the same license as the reCAPTCHA Lightweight Adaptation package.
+msgid ""
+msgstr ""
+"Project-Id-Version: reCAPTCHA Lightweight Adaptation 1.0.0\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/plugin\n"
+"POT-Creation-Date: 2015-07-13 21:07+0300\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2015-07-13 21:26+0300\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Kolya Korobochkin <me@korobochkin.com>\n"
+"X-Generator: Poedit 1.8.2\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Language: ru_RU\n"
+
+#: admin/class-settings.php:61 admin/class-settings.php:66
+msgid "Recaptcha lightweight adaptation"
+msgstr "Recaptcha lightweight adaptation"
+
+#: admin/class-settings.php:67
+msgid "Recaptcha"
+msgstr "Recaptcha"
+
+#: admin/class-settings.php:89
+msgid ""
+"This keys settings are required. You can get it on <a href=\"https://www."
+"google.com/recaptcha/admin\">Google reCAPTCHA Admin</a> page."
+msgstr ""
+"Поля с ключами обязательны для заполнения. Вы можете получить их <a href="
+"\"https://www.google.com/recaptcha/admin\">на странице администратора "
+"Google reCAPTCHA</a>."
+
+#: admin/class-settings.php:93
+msgid "Secret keys"
+msgstr "Ключи"
+
+#: admin/class-settings.php:100
+msgid "Visual settings of the Captcha block (widget)."
+msgstr "Визуальные настройки блока (виджета) капчи."
+
+#: admin/class-settings.php:104
+msgid "View"
+msgstr "Внешний вид"
+
+#: admin/class-settings.php:111
+msgid "Where to show Recaptcha widget (and validate)."
+msgstr "Где показывать виджет Recaptcha (и проверять данные)."
+
+#: admin/class-settings.php:115
+msgid "Locations"
+msgstr "Места"
+
+#: admin/class-settings.php:129
+msgid "Site key"
+msgstr "Ключ сайта"
+
+#: admin/class-settings.php:141
+msgid "Secret key"
+msgstr "Секретный ключ"
+
+#: admin/class-settings.php:151
+msgid "Light"
+msgstr "Светлая"
+
+#: admin/class-settings.php:152
+msgid "Dark"
+msgstr "Темная"
+
+#: admin/class-settings.php:157
+msgid "The color theme of the widget"
+msgstr "Цветовая тема виджета"
+
+#: admin/class-settings.php:166
+msgid ""
+"You can specify many of languages for Captcha widget. The list of available "
+"lanuage codes at <a href=\"https://developers.google.com/recaptcha/docs/"
+"language\" target=\"_blank\">Google Language codes</a>."
+msgstr ""
+"Виджет капчи поддерживает множество языков. Список доступных языков можно "
+"найти на странице <a href=\"https://developers.google.com/recaptcha/docs/"
+"language\" target=\"_blank\">Google Language codes</a>."
+
+#: admin/class-settings.php:170
+msgid "Language"
+msgstr "Язык"
+
+#: admin/class-settings.php:181
+msgid "The signup page (<code>wp-login.php?action=register</code>)."
+msgstr "Страница регистрации (<code>wp-login.php?action=register</code>)."
+
+#: admin/class-settings.php:182
+msgid ""
+"The reset password page (<code>wp-login.php?action=lostpassword</code>)."
+msgstr ""
+"Страница сброса пароля (<code>wp-login.php?action=lostpassword</code>)."
+
+#: admin/class-settings.php:187
+msgid "The pages which shows up the Recaptcha widget"
+msgstr "Страницы, на которых будет показываться капча"
+
+#: inc/class-api.php:56
+msgid "The secret parameter is missing."
+msgstr "Секретный ключ не найден."
+
+#: inc/class-api.php:57
+msgid "The secret parameter is invalid or malformed."
+msgstr "Секретный ключ неверный."
+
+#: inc/class-api.php:58
+msgid "The response parameter is missing."
+msgstr "Уникальный код ответа не найден."
+
+#: inc/class-api.php:59
+msgid "The response parameter is invalid or malformed."
+msgstr "Уникальный код ответа неверен."
+
+#: inc/class-api.php:67
+msgid ""
+"Not all required data are presents in admin settings or passed to function "
+"for check."
+msgstr ""
+"Некоторые обязательные поля не были заполнены в настройках или не были "
+"переданы в функцию для проверки."
+
+#: inc/class-api.php:68
+msgid ""
+"The obtained data from Google API have not valid format. Please notify the "
+"site administrator."
+msgstr ""
+"Полученный ответ от Google API имеет неверный формат. Пожалуйста, сообщите "
+"об этом администратору сайта."
+
+#: inc/class-api.php:69
+msgid "Unknown Google API answer and (or) type of errors inside."
+msgstr "Непонятный ответ Google API или неизвестный тип ошибки."
+
+#: public/class-wp-login.php:89 public/class-wp-login.php:95
+#: public/class-wp-login.php:153 public/class-wp-login.php:159
+msgid ""
+"<strong>ERROR</strong> Unknown result of the Recaptcha Light Adaptation "
+"plugin validation process."
+msgstr ""
+"<strong>ОШИБКА</strong> Незивестный результат проверки плагином Recaptcha "
+"Light Adaptation."
+
+#: public/class-wp-login.php:99 public/class-wp-login.php:163
+msgid "<strong>ERROR</strong>. Check „I’m not a robot“ checkbox."
+msgstr "<strong>ОШИБКА</strong>. Отметьте поле «Я не робот»."
+
+#. Plugin Name of the plugin/theme
+msgid "reCAPTCHA Lightweight Adaptation"
+msgstr "reCAPTCHA Lightweight Adaptation"
+
+#. Plugin URI of the plugin/theme
+msgid "https://github.com/korobochkin/reCAPTCHA-lightweight-adaptation"
+msgstr "https://github.com/korobochkin/reCAPTCHA-lightweight-adaptation"
+
+#. Description of the plugin/theme
+msgid ""
+"A lightweight Google reCAPTCHA adaptation. This plugin provides the ability "
+"to add reCAPTCHA on Sign Up and Reset password pages. Easy API and methods "
+"also available for your custom reCAPTCHA integration in the other places of "
+"your site."
+msgstr ""
+"Легкая адаптация сервиса reCAPTCHA от Google. Плагин позволяет добавить "
+"капчу от сервиса reCAPTCHA на страницы регистрации и сброса пароля. Легкое "
+"API и несколько методов внутри позволяют использовать reCAPTCHA в любом "
+"месте вашего сайта."
+
+#. Author of the plugin/theme
+msgid "Kolya Korobochkin"
+msgstr "Коля Коробочкин"
+
+#. Author URI of the plugin/theme
+msgid "http://korobochkin.com/"
+msgstr "http://korobochkin.com/"
