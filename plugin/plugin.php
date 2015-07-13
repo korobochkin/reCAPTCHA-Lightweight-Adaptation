@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: reCAPTCHA lightweight adaptation
+Plugin Name: reCAPTCHA Lightweight Adaptation
 Plugin URI:  https://github.com/korobochkin/reCAPTCHA-lightweight-adaptation
 Description: A lightweight Google reCAPTCHA adaptation
 Version:     1.0.0
