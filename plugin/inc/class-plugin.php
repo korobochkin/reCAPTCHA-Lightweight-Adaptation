@@ -42,7 +42,7 @@ class Recaptcha_Lightweight_Adaptation_Plugin {
 	 * @since 1.0.0
 	 */
 	public static function init() {
-		self::$plugin_name = 'recaptcha-lightweight-adaptation';
+		self::$plugin_name = 'recaptcha_lightweight_adaptation';
 		self::$version = '1.0.0';
 	}
 
