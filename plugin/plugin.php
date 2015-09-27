@@ -1,4 +1,5 @@
 <?php
+namespace Korobochkin\RecaptchaLightweightAdaptation;
 /*
 Plugin Name: reCAPTCHA Lightweight Adaptation
 Plugin URI:  https://github.com/korobochkin/reCAPTCHA-lightweight-adaptation
@@ -12,8 +13,14 @@ Domain Path: /languages
 Text Domain: recaptcha_lightweight_adaptation
 */
 
+$kk = dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/';
 /**
- * Load the main plugin class.
+ * Autoloader for all classes.
+ *
+ * @since 2.0.0
  */
-require 'inc/class-plugin.php';
-Recaptcha_Lightweight_Adaptation_Plugin::run();
+require_once 'vendor/autoload.php';
+
+Plugin::run();
+
+
