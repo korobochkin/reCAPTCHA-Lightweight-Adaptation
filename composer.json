@@ -1,0 +1,14 @@
+{
+  "name": "korobochkin/recaptcha-lightweight-adaptation",
+  "description": "Google ReCaptcha plugin for WordPress",
+  "type": "wordpress-plugin",
+  "minimum-stability": "stable",
+  "license": "GPL2",
+  "authors": [
+    {
+      "name": "Kolya Korobochkin",
+      "email": "me@korobochkin.com",
+      "homepage": "http://korobochkin.com"
+    }
+  ]
+}
