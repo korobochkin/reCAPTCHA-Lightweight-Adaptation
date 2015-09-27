@@ -1,0 +1,29 @@
+{
+  "name": "recaptcha-lightweight-adaptation",
+  "version": "2.0.0",
+  "description": "Google ReCaptcha plugin for WordPress",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/korobochkin/reCAPTCHA-Lightweight-Adaptation.git"
+  },
+  "keywords": [
+    "WordPress",
+    "captcha",
+    "plugin",
+    "spammers"
+  ],
+  "author": "Kolya Korobochkin",
+  "license": "GPL-2.0",
+  "bugs": {
+    "url": "https://github.com/korobochkin/reCAPTCHA-Lightweight-Adaptation/issues"
+  },
+  "homepage": "https://github.com/korobochkin/reCAPTCHA-Lightweight-Adaptation#readme",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-copy": "^0.8.0"
+  }
+}
