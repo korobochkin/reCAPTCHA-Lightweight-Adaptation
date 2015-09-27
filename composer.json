@@ -10,5 +10,10 @@
       "email": "me@korobochkin.com",
       "homepage": "http://korobochkin.com"
     }
-  ]
+  ],
+  "autoload": {
+    "psr-4": {
+      "Korobochkin\\RecaptchaLightweightAdaptation\\": "inc/"
+    }
+  }
 }
